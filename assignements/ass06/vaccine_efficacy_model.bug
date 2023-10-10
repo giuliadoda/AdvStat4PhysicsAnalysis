@@ -1,0 +1,11 @@
+# model
+model {
+    # likelihood
+    for (i in 1:N) {
+        tested[i] ~ dbern(theta[patient[i]]);
+    }
+    # prior
+    for (j in 1:Nclass) {
+        theta[j] ~ dbeta(3,100);
+    }
+}

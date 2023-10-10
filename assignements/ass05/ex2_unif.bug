@@ -1,0 +1,20 @@
+# model
+model {
+
+    # likelihood 
+
+    # dataset 1
+    for (i in 1:length(Y1)) {
+        Y1[i] ~ dpois(lambda_1);
+    }
+
+    # dataset2
+    for (i in 1:length(Y2)) {
+        Y2[i] ~ dpois(lambda_2);
+    }
+
+    # prior for lambda (uniform --> Gamma(1,0), the same for both datasets) 
+    lambda_1 ~ dgamma(1,0.000001);
+    lambda_2 ~ dgamma(1,0.000001);
+    
+}
